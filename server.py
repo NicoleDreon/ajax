@@ -28,6 +28,7 @@ WEATHER = {
 
 DEFAULT_WEATHER = {'forecast': 'Kind of boring.', 'temp': '68F'}
 
+
 @app.route('/')
 def index():
     """Show our index page."""
@@ -63,7 +64,7 @@ def order_melons():
         result_text = "You can't buy more than 10 melons"
     elif qty > 0:
         result_code = 'OK'
-        result_text = "You have bought {} {} melons".format(qty, melon)
+        result_text = f'You have bought {qty} {melon} melons.'
     else:
         result_code = 'ERROR'
         result_text = "You want to buy fewer than 1 melons? Huh?"
