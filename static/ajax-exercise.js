@@ -36,19 +36,20 @@ function orderMelons(evt) {
   evt.preventDefault();
 
   let url = "/order-melons.json";
-  //   let formData = { code: result_code, msg: result_text };
-  //  let code =
-  //  let msg =
-  //   console.log(formData);
+
   const formInputs = {
-    melon: $("#melon-type-field").val(),
+    melon_type: $("#melon-type-field").val(), // melon_type and not melon?
     qty: $("#qty-field").val(),
   };
-  console.log(formInputs);
+  //   console.log(formInputs);
   $.post(url, formInputs, (res) => {
-    console.log(res);
-    // $("#order-status").html(res.melon);
+    // console.log(res);
+    $("#order-status").html(`${res.code} ${res.msg}`);
+    if (res.code === "ERROR") {
+      $("#order-status").addClass("order-error");
+    } else if (res.code === "OK") $("#order-status").removeClass("order-error");
   });
+
   // TODO: show the result message after your form
   // TODO: if the result code is ERROR, make it show up in red (see our CSS!)
 }
